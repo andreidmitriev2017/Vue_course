@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>План курса</title>
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <div class="container pt-5" id="app" v-cloak>
+    <div class="card left">
+
+      <h1>План по изучению Vue.js</h1>
+      <p>В данном блоке вы узнаете все о том, как работает мультиязычность во Vue.Мы создадим миниклон Gmail в данном блоку, где вы на практике увидите как работать с динамическик роутером</p>
+
+      <ul class="list">
+        <li 
+          v-for="(item, i) in items"
+          class="list-item"
+        >
+          <span
+            class="round"
+            :class="{
+              'active': item.isActive,
+              'unActive': item.isActive == false && item.unActive == true
+            }"
+            @click="switchClass(i)"
+          >
+            {{ i + 1}}
+          </span>
+          {{ item.name }}
+        </li>
+      </ul>
+
+      <div class="btn-group" v-if="visibleBtns">
+        <button
+          class="btn"
+          @click="prevClass"
+        >Назад</button>
+        <button
+          class="btn primary"
+          @click="onClick"
+        >{{ changeText }}</button>
+      </div>
+
+      <div class="btn-group" v-else>
+        <button class="btn" @click="resetClass">начать занаво</button>
+      </div>
+    </div>
+  </div>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="app.js"></script>
+</body>
+</html>
