@@ -1,25 +1,7 @@
 <template>
     <div>
         <div class="container column">
-            <form class="card card-w30">
-                <div class="form-control">
-                    <label for="type">Тип блока</label>
-                    <select id="type">
-                        <option value="title">Заголовок</option>
-                        <option value="subtitle">Подзаголовок</option>
-                        <option value="avatar">Аватар</option>
-                        <option value="text">Текст</option>
-                    </select>
-                </div>
-
-                <div class="form-control">
-                    <label for="value">Значение</label>
-                    <textarea id="value" rows="3"></textarea>
-                </div>
-
-                <button class="btn primary">Добавить</button>
-            </form>
-
+            <app-form @submit="writeData"></app-form>
             <div class="card card-w70">
                 <h1>Резюме Nickname</h1>
                 <div class="avatar">
@@ -32,6 +14,7 @@
                 <h3>Добавьте первый блок, чтобы увидеть результат</h3>
             </div>
         </div>
+        
         <div class="container">
             <p>
                 <button class="btn primary">Загрузить комментарии</button>
@@ -53,8 +36,23 @@
 </template>
 
 <script>
+import AppForm from './components/AppForm'
 export default {
+    data() {
+        return {
+            resume: [],
+        }
+    },
 
+    methods: {
+        writeData(obj) {
+            this.resume.push(obj);
+        }
+    },
+
+    components: {
+        AppForm,
+    }
 }
 </script>
 
